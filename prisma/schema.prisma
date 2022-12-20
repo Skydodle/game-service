@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model game {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  player1Id Int
+  player2Id Int
+  isActive Boolean @default(false)
+  gameWinner Int
+  player1Hits Int
+  player2Hits Int
+
+}
+
+// game methods
+// initializeGame
+// RollAttackChance (some % function)
+// endGame (winner is decided when player1Hits === 10)
+
+// player methods
+// initialize player
+// sendAttack --> send to the game service call RollAttackChance()
+
