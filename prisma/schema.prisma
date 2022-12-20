@@ -18,9 +18,9 @@ model game {
   player1Id Int
   player2Id Int
   isActive Boolean @default(false)
-  gameWinner Int
-  player1Hits Int
-  player2Hits Int
+  gameWinner Int?
+  player1Hits Int?
+  player2Hits Int?
 
 }
 

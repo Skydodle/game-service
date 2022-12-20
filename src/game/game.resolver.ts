@@ -9,8 +9,8 @@ export class GameResolver {
   constructor(private readonly gameService: GameService) {}
 
   @Mutation(() => Game)
-  createGame(@Args('createGameInput') createGameInput: CreateGameInput) {
-    return this.gameService.create(createGameInput);
+  createGame() {
+    return this.gameService.create();
   }
 
   @Query(() => [Game], { name: 'game' })

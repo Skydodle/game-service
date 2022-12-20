@@ -8,8 +8,19 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class GameService {
   constructor(private prismaService: PrismaService) {}
 
-  create(createGameInput: CreateGameInput) {
-    return 'This action adds a new game';
+  // we first need to call initPlayer()
+  // const playerOne = initPlayer()
+  // fetch('playerGraphQL') // does mutation to initialize and return an id
+  create() {
+    return this.prismaService.game.create({
+      data: {
+        player1Id: 0, // playerOne.id
+        player2Id: 1,
+        gameWinner: 0,
+        player1Hits: 1,
+        player2Hits: 2,
+      },
+    });
   }
 
   findAll() {
