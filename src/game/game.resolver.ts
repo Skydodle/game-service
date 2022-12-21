@@ -8,17 +8,17 @@ import { UpdateGameInput } from './dto/update-game.input';
 export class GameResolver {
   constructor(private readonly gameService: GameService) {}
 
-  @Mutation(() => Game)
+  @Mutation(() => Game, { name: 'CreateGame' })
   createGame() {
     return this.gameService.create();
   }
 
-  @Query(() => [Game], { name: 'allGames' })
+  @Query(() => [Game], { name: 'ListAllGames' })
   findAll() {
     return this.gameService.findAll();
   }
 
-  @Query(() => Game, { name: 'game' })
+  @Query(() => Game, { name: 'FindGameById' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.gameService.findOne(id);
   }

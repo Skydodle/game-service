@@ -16,9 +16,9 @@ export class GameService {
       data: {
         player1Id: 0, // playerOne.id
         player2Id: 1,
-        gameWinner: 0,
-        player1Hits: 1,
-        player2Hits: 2,
+        // gameWinner: 0,
+        // player1Hits: 1,
+        // player2Hits: 2,
       },
     });
   }
@@ -28,7 +28,10 @@ export class GameService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} game`;
+    return this.prismaService.game.findUnique({
+      where: { id },
+      select: { id: true, player1Hits: true, player2Hits: true },
+    });
   }
 
   update(id: number, updateGameInput: UpdateGameInput) {

@@ -20,14 +20,14 @@ type Game {
 }
 
 type Mutation {
-  createGame: Game!
+  CreateGame: Game!
   removeGame(id: Int!): Game!
   updateGame(updateGameInput: UpdateGameInput!): Game!
 }
 
 type Query {
-  allGames: [Game!]!
-  game(id: Int!): Game!
+  FindGameById(id: Int!): Game!
+  ListAllGames: [Game!]!
 }
 
 input UpdateGameInput {
