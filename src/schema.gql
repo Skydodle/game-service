@@ -2,9 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Game {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  createdAt: DateTime!
+  gameWinner: Int
+  id: Int!
+  isActive: Boolean!
+  player1Hits: Int
+  player1Id: Int!
+  player2Hits: Int
+  player2Id: Int!
+  updatedAt: DateTime!
 }
 
 type Mutation {
