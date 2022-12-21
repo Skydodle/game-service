@@ -24,7 +24,7 @@ export class GameService {
   }
 
   findAll() {
-    return `This action returns all game`;
+    return this.prismaService.game.findMany();
   }
 
   findOne(id: number) {
@@ -36,6 +36,8 @@ export class GameService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} game`;
+    return this.prismaService.game.delete({
+      where: { id },
+    });
   }
 }

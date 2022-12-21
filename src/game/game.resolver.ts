@@ -13,7 +13,7 @@ export class GameResolver {
     return this.gameService.create();
   }
 
-  @Query(() => [Game], { name: 'game' })
+  @Query(() => [Game], { name: 'allGames' })
   findAll() {
     return this.gameService.findAll();
   }

@@ -26,6 +26,7 @@ type Mutation {
 }
 
 type Query {
+  allGames: [Game!]!
   game(id: Int!): Game!
 }
 

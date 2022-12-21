@@ -10,14 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model game {
+model Game {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   player1Id Int
   player2Id Int
-  isActive Boolean @default(false)
+  isActive Boolean @default(true)
   gameWinner Int?
   player1Hits Int?
   player2Hits Int?
