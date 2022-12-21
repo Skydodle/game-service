@@ -15,9 +15,9 @@ model Game {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  player1Id Int
-  player2Id Int
-  isActive Boolean @default(true)
+  player1Id Int?
+  player2Id Int?
+  isActive Boolean @default(false)
   gameWinner Int?
   player1Hits Int?
   player2Hits Int?

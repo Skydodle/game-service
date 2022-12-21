@@ -8,17 +8,24 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class GameService {
   constructor(private prismaService: PrismaService) {}
 
-  // we first need to call initPlayer()
-  // const playerOne = initPlayer()
-  // fetch('playerGraphQL') // does mutation to initialize and return an id
   create() {
+    // fetch ('playerGraphQL').initPlayer to get player IDs
     return this.prismaService.game.create({
+      data: {},
+    });
+  }
+
+  // receive game id and update player IDs
+  updatePlayerIDs(id: number, { player1Id, player2Id }: UpdateGameInput) {
+    // do want to be to able to change
+    // do want to be able to change 1 time
+    // if null we can change
+    // if !null no change
+    return this.prismaService.game.update({
+      where: { id },
       data: {
-        player1Id: 0, // playerOne.id
-        player2Id: 1,
-        // gameWinner: 0,
-        // player1Hits: 1,
-        // player2Hits: 2,
+        player1Id,
+        player2Id,
       },
     });
   }
@@ -34,8 +41,13 @@ export class GameService {
     });
   }
 
-  update(id: number, updateGameInput: UpdateGameInput) {
-    return `This action updates a #${id} game`;
+  update(id: number, { gameWinner }: UpdateGameInput) {
+    return this.prismaService.game.update({
+      where: { id },
+      data: {
+        gameWinner,
+      },
+    });
   }
 
   remove(id: number) {
@@ -44,3 +56,9 @@ export class GameService {
     });
   }
 }
+
+// send attack(attackingPlayerId) -----from client to game ----> game rollChance---> if true increment playerHit by 1 then check if count =10
+// 10 = win
+// when we increment a playerHit column if === 10 trigger gameOver
+// gameWinner set winning player's id
+// gameover ==> set isActive to false

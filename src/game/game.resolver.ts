@@ -23,9 +23,19 @@ export class GameResolver {
     return this.gameService.findOne(id);
   }
 
-  @Mutation(() => Game)
+  @Mutation(() => Game, { name: 'UpdatePlayerIDs' })
+  updatePlayerIDs(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+    return this.gameService.updatePlayerIDs(
+      updateGameInput.id,
+      updateGameInput,
+    );
+  }
+  @Mutation(() => Game, { name: 'UpdateGame' })
   updateGame(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
-    return this.gameService.update(updateGameInput.id, updateGameInput);
+    return this.gameService.updatePlayerIDs(
+      updateGameInput.id,
+      updateGameInput,
+    );
   }
 
   @Mutation(() => Game)

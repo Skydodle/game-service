@@ -12,10 +12,10 @@ export class Game {
   @Field((type) => Date)
   updatedAt: Date;
 
-  @Field((type) => Int)
+  @Field((type) => Int, { nullable: true })
   player1Id: number;
 
-  @Field((type) => Int)
+  @Field((type) => Int, { nullable: true })
   player2Id: number;
 
   @Field((type) => Boolean)
