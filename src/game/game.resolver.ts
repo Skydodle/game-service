@@ -30,12 +30,17 @@ export class GameResolver {
       updateGameInput,
     );
   }
-  @Mutation(() => Game, { name: 'UpdateGame' })
-  updateGame(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
-    return this.gameService.updatePlayerIDs(
-      updateGameInput.id,
-      updateGameInput,
-    );
+  @Mutation(() => Game, { name: 'UpdateWinner' })
+  updateWinner(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+    return this.gameService.updateWinner(updateGameInput.id, updateGameInput);
+  }
+  @Mutation(() => Game, { name: 'UpdateP1Hits' })
+  updateP1Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+    return this.gameService.sendAttackP1(updateGameInput.id, updateGameInput);
+  }
+  @Mutation(() => Game, { name: 'UpdateP2Hits' })
+  updateP2Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+    return this.gameService.sendAttackP2(updateGameInput.id, updateGameInput);
   }
 
   @Mutation(() => Game)

@@ -21,8 +21,10 @@ type Game {
 
 type Mutation {
   CreateGame: Game!
-  UpdateGame(updateGameInput: UpdateGameInput!): Game!
+  UpdateP1Hits(updateGameInput: UpdateGameInput!): Game!
+  UpdateP2Hits(updateGameInput: UpdateGameInput!): Game!
   UpdatePlayerIDs(updateGameInput: UpdateGameInput!): Game!
+  UpdateWinner(updateGameInput: UpdateGameInput!): Game!
   removeGame(id: Int!): Game!
 }
 
@@ -36,7 +38,7 @@ input UpdateGameInput {
   id: Int!
   isActive: Boolean
   player1Hits: Int
-  player1Id: Int!
+  player1Id: Int
   player2Hits: Int
-  player2Id: Int!
+  player2Id: Int
 }

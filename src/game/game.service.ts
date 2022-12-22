@@ -8,19 +8,17 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class GameService {
   constructor(private prismaService: PrismaService) {}
 
+  // Initialize game
   create() {
-    // fetch ('playerGraphQL').initPlayer to get player IDs
     return this.prismaService.game.create({
       data: {},
     });
   }
 
-  // receive game id and update player IDs
+  // Update playerIDs once players are initialized
   updatePlayerIDs(id: number, { player1Id, player2Id }: UpdateGameInput) {
-    // do want to be to able to change
-    // do want to be able to change 1 time
-    // if null we can change
-    // if !null no change
+    // fetch player service for id
+    // if null update playerID, if not null no change
     return this.prismaService.game.update({
       where: { id },
       data: {
@@ -41,7 +39,28 @@ export class GameService {
     });
   }
 
-  update(id: number, { gameWinner }: UpdateGameInput) {
+  async sendAttackP1(id: number, { player1Hits }: UpdateGameInput) {
+    const rollChance = Math.random() < 0.5;
+    const currentHit = (await this.findOne(id)).player1Hits;
+    return this.prismaService.game.update({
+      where: { id },
+      data: {
+        player1Hits: rollChance ? currentHit + 1 : player1Hits,
+      },
+    });
+  }
+  async sendAttackP2(id: number, { player2Hits }: UpdateGameInput) {
+    const rollChance = Math.random() < 0.5;
+    const currentHit = (await this.findOne(id)).player2Hits;
+    return this.prismaService.game.update({
+      where: { id },
+      data: {
+        player2Hits: rollChance ? currentHit + 1 : player2Hits,
+      },
+    });
+  }
+
+  updateWinner(id: number, { gameWinner }: UpdateGameInput) {
     return this.prismaService.game.update({
       where: { id },
       data: {
