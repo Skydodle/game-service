@@ -12,12 +12,6 @@ export class UpdateGameInput {
   @Field((type) => Int, { nullable: true })
   gameWinner: number;
 
-  @Field((type) => Int, { nullable: true })
-  player1Hits: number;
-
-  @Field((type) => Int, { nullable: true })
-  player2Hits: number;
-
   @Field(() => Int, { nullable: true })
   player1Id: number;
 

@@ -12,17 +12,13 @@ type Game {
   gameWinner: Int
   id: Int!
   isActive: Boolean!
-  player1Hits: Int
   player1Id: Int
-  player2Hits: Int
   player2Id: Int
   updatedAt: DateTime!
 }
 
 type Mutation {
   CreateGame: Game!
-  UpdateP1Hits(updateGameInput: UpdateGameInput!): Game!
-  UpdateP2Hits(updateGameInput: UpdateGameInput!): Game!
   UpdatePlayerIDs(updateGameInput: UpdateGameInput!): Game!
   UpdateWinner(updateGameInput: UpdateGameInput!): Game!
   removeGame(id: Int!): Game!
@@ -37,8 +33,6 @@ input UpdateGameInput {
   gameWinner: Int
   id: Int!
   isActive: Boolean
-  player1Hits: Int
   player1Id: Int
-  player2Hits: Int
   player2Id: Int
 }

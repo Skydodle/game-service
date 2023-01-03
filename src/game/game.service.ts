@@ -35,28 +35,7 @@ export class GameService {
   findOne(id: number) {
     return this.prismaService.game.findUnique({
       where: { id },
-      select: { id: true, player1Hits: true, player2Hits: true },
-    });
-  }
-
-  async sendAttackP1(id: number, { player1Hits }: UpdateGameInput) {
-    const rollChance = Math.random() < 0.5;
-    const currentHit = (await this.findOne(id)).player1Hits;
-    return this.prismaService.game.update({
-      where: { id },
-      data: {
-        player1Hits: rollChance ? currentHit + 1 : player1Hits,
-      },
-    });
-  }
-  async sendAttackP2(id: number, { player2Hits }: UpdateGameInput) {
-    const rollChance = Math.random() < 0.5;
-    const currentHit = (await this.findOne(id)).player2Hits;
-    return this.prismaService.game.update({
-      where: { id },
-      data: {
-        player2Hits: rollChance ? currentHit + 1 : player2Hits,
-      },
+      select: { id: true },
     });
   }
 
@@ -65,6 +44,7 @@ export class GameService {
       where: { id },
       data: {
         gameWinner,
+        isActive: false,
       },
     });
   }
@@ -76,8 +56,32 @@ export class GameService {
   }
 }
 
-// send attack(attackingPlayerId) -----from client to game ----> game rollChance---> if true increment playerHit by 1 then check if count =10
-// 10 = win
-// when we increment a playerHit column if === 10 trigger gameOver
-// gameWinner set winning player's id
-// gameover ==> set isActive to false
+/** Outdated logics after moving actions to Player service **
+ *
+ *
+  async sendAttackP1(id: number, { player1Hits }: UpdateGameInput) {
+    const rollChance = Math.random() < 0.5;
+    const currentHit = (await this.findOne(id)).player1Hits;
+
+    return this.prismaService.game.update({
+      where: { id },
+      data: {
+        player1Hits: rollChance ? currentHit + 1 : player1Hits,
+      },
+    });
+  }
+
+  async sendAttackP2(id: number, { player2Hits }: UpdateGameInput) {
+    const rollChance = Math.random() < 0.5;
+    const currentHit = (await this.findOne(id)).player2Hits;
+
+    return this.prismaService.game.update({
+      where: { id },
+      data: {
+        player2Hits: rollChance ? currentHit + 1 : player2Hits,
+      },
+    });
+  }
+ *
+
+ */

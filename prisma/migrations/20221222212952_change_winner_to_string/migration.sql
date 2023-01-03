@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Game" ALTER COLUMN "gameWinner" SET DATA TYPE TEXT;

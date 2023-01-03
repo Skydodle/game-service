@@ -23,11 +23,5 @@ export class Game {
 
   @Field((type) => Int, { nullable: true })
   gameWinner: number;
-
-  @Field((type) => Int, { nullable: true })
-  player1Hits: number;
-
-  @Field((type) => Int, { nullable: true })
-  player2Hits: number;
 }
 // TODO FILL THIS OUT TO GENERATE CODE FIRST GRAPHQL SCHEMA

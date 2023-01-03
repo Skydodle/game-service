@@ -34,17 +34,24 @@ export class GameResolver {
   updateWinner(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
     return this.gameService.updateWinner(updateGameInput.id, updateGameInput);
   }
-  @Mutation(() => Game, { name: 'UpdateP1Hits' })
-  updateP1Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
-    return this.gameService.sendAttackP1(updateGameInput.id, updateGameInput);
-  }
-  @Mutation(() => Game, { name: 'UpdateP2Hits' })
-  updateP2Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
-    return this.gameService.sendAttackP2(updateGameInput.id, updateGameInput);
-  }
 
   @Mutation(() => Game)
   removeGame(@Args('id', { type: () => Int }) id: number) {
     return this.gameService.remove(id);
   }
 }
+
+/** Outdated mutations after moving action to Player service **
+ *
+ *
+@Mutation(() => Game, { name: 'UpdateP1Hits' })
+updateP1Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+  return this.gameService.sendAttackP1(updateGameInput.id, updateGameInput);
+}
+@Mutation(() => Game, { name: 'UpdateP2Hits' })
+updateP2Hits(@Args('updateGameInput') updateGameInput: UpdateGameInput) {
+  return this.gameService.sendAttackP2(updateGameInput.id, updateGameInput);
+}
+ *
+ *
+**/

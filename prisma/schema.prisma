@@ -17,11 +17,8 @@ model Game {
 
   player1Id Int?
   player2Id Int?
-  isActive Boolean @default(false)
+  isActive Boolean @default(true)
   gameWinner Int?
-  player1Hits Int? @default(0)
-  player2Hits Int? @default(0)
-
 }
 
 // game methods
@@ -32,4 +29,6 @@ model Game {
 // player methods
 // initialize player
 // sendAttack --> send to the game service call RollAttackChance()
+
+
 
