@@ -33,9 +33,8 @@ export class GameService {
   }
 
   findOne(id: number) {
-    return this.prismaService.game.findUnique({
-      where: { id },
-      select: { id: true },
+      return this.prismaService.game.findFirst({
+      where: { id: id },
     });
   }
 
