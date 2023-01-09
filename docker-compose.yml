@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  player_dev_db:
+  game_dev_db:
     image: postgres:14
     container_name: game_dev_db
     ports:
