@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateGameInput } from './dto/create-game.input';
 import { UpdateGameInput } from './dto/update-game.input';
 import { Game } from './entities/game.entity';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class GameService {
@@ -33,7 +33,7 @@ export class GameService {
   }
 
   findOne(id: number) {
-      return this.prismaService.game.findFirst({
+    return this.prismaService.game.findFirst({
       where: { id: id },
     });
   }
