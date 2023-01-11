@@ -21,14 +21,6 @@ model Game {
   gameWinner Int?
 }
 
-// game methods
-// initializeGame
-// RollAttackChance (some % function)
-// endGame (winner is decided when player1Hits === 10)
-
-// player methods
-// initialize player
-// sendAttack --> send to the game service call RollAttackChance()
 
 
 

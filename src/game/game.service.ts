@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateGameInput } from './dto/create-game.input';
 import { UpdateGameInput } from './dto/update-game.input';
-import { Game } from './entities/game.entity';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -17,8 +15,6 @@ export class GameService {
 
   // Update playerIDs once players are initialized
   updatePlayerIDs(id: number, { player1Id, player2Id }: UpdateGameInput) {
-    // fetch player service for id
-    // if null update playerID, if not null no change
     return this.prismaService.game.update({
       where: { id },
       data: {

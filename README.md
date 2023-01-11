@@ -32,6 +32,11 @@
 $ npm install
 ```
 
+```bash
+# initialize docker & prisma
+$ npm run db:dev:init
+```
+
 ## Running the app
 
 ```bash
@@ -50,6 +55,9 @@ $ npm run start:prod
 ```bash
 # unit tests
 $ npm run test
+
+# watch mode
+$ npm run test:watch
 
 # e2e tests
 $ npm run test:e2e
